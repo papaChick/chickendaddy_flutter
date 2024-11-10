@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:chickendaddy_flutter/widgets/left_drawer.dart';
+import 'package:chickendaddy_flutter/widgets/product_card.dart';
 
 class MyHomePage extends StatelessWidget {
   final String npm = '2306152323';
   final String name = 'Christian Raphael Heryanto';
   final String className = 'PBP D';
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Mood", Icons.mood, Colors.yellow),
-    ItemHomepage("Tambah Mood", Icons.add, Colors.blue),
+    ItemHomepage("Lihat Product", Icons.mood, Colors.blue),
+    ItemHomepage("Tambah Product", Icons.add, Colors.green),
     ItemHomepage("Logout", Icons.logout, Colors.red),
   ];
 
@@ -20,7 +22,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         // Judul aplikasi "Mental Health Tracker" dengan teks putih dan tebal.
         title: const Text(
-          'Mental Health Tracker',
+          'Chicken Daddy',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -28,7 +30,11 @@ class MyHomePage extends StatelessWidget {
         ),
         // Warna latar belakang AppBar diambil dari skema warna tema aplikasi.
         backgroundColor: Theme.of(context).colorScheme.primary,
+        // Mengganti warna icon drawer menjadi putih
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
+      // Masukkan drawer sebagai parameter nilai drawer dari widget Scaffold
+      drawer: const LeftDrawer(),
       // Body halaman dengan padding di sekelilingnya.
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -59,7 +65,7 @@ class MyHomePage extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(top: 16.0),
                     child: Text(
-                      'Welcome to Mental Health Tracker',
+                      'Welcome to Chicken Daddy',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
@@ -125,64 +131,3 @@ class InfoCard extends StatelessWidget {
     );
   }
 }
-
-class ItemHomepage {
-  final String name;
-  final IconData icon;
-  final Color backgroundColor;
-
-  ItemHomepage(this.name, this.icon, this.backgroundColor);
-}
-
-class ItemCard extends StatelessWidget {
-  // Menampilkan kartu dengan ikon dan nama.
-
-  final ItemHomepage item;
-
-  const ItemCard(this.item, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      // Menentukan warna latar belakang dari tema aplikasi.
-      color: item.backgroundColor,
-      // Membuat sudut kartu melengkung.
-      borderRadius: BorderRadius.circular(12),
-
-      child: InkWell(
-        // Aksi ketika kartu ditekan.
-        onTap: () {
-          // Menampilkan pesan SnackBar saat kartu ditekan.
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
-        },
-        // Container untuk menyimpan Icon dan Text
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              // Menyusun ikon dan teks di tengah kartu.
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-

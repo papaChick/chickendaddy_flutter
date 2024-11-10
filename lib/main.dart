@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chickendaddy_flutter/menu.dart';
+import 'package:chickendaddy_flutter/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,5 +38,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

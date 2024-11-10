@@ -86,11 +86,11 @@ Menampilkan pesan singkat di bagian bawah layar
     ```dart
       class ItemCard extends StatelessWidget {
       // Menampilkan kartu dengan ikon dan nama.
-    
+
       final ItemHomepage item;
-    
+
       const ItemCard(this.item, {super.key});
-    
+
       @override
       Widget build(BuildContext context) {
           return Material(
