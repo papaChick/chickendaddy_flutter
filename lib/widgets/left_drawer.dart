@@ -1,3 +1,4 @@
+import 'package:chickendaddy_flutter/screens/list_productentry.dart';
 import 'package:flutter/material.dart';
 import 'package:chickendaddy_flutter/screens/menu.dart';
 import 'package:chickendaddy_flutter/screens/productsentry_form.dart';
@@ -53,13 +54,24 @@ class LeftDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.mood),
             title: const Text('Tambah Products'),
-            // Bagian redirection ke MoodEntryFormPage
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => ProductsEntryFormPage(),
                   ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add_reaction_rounded),
+            title: const Text('Daftar Products'),
+            onTap: () {
+              // Route menu ke halaman mood
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ProductEntryPage()),
+              );
             },
           ),
         ],
